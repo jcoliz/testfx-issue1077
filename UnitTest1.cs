@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-[assembly: Parallelize(Workers = 4, Scope = ExecutionScope.MethodLevel)]
+[assembly: Parallelize(Workers = 2, Scope = ExecutionScope.MethodLevel)]
 
 namespace testfx_issue1077;
 
 [TestClass]
 public class UnitTest1
 {
-    public static IEnumerable<object[]> Values => Enumerable.Range(1,100).Select(x => new object[] { x });
+    public static IEnumerable<object[]> Values => Enumerable.Range(1,10000).Select(x => new object[] { x });
 
     private byte[] MakeHash(int value)
     {
